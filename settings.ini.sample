@@ -1,0 +1,7 @@
+[main]
+protocol = https
+server = localhost
+port = 443
+url = %(protocol)s://%(server)s:%(port)s
+username = admin
+password = changeme
