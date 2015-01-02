@@ -9,11 +9,11 @@ import logging
 
 logger = logging.getLogger(__name__)  # pylint:disable=invalid-name
 
-USERNAME_FLD = u'login[login]'
-PASSWORD_FLD = u'login[password]'
-SUBMIT_BTN = u'commit'
-ACCOUNT_MN = u'account_menu'
-LOGOUT_MN = u'menu_item_logout'
+FLD_PASSWORD = u'login[password]'
+FLD_USERNAME = u'login[login]'
+BTN_LOGIN = u'commit'
+MENU_ACCOUNT = u'account_menu'
+MENU_LOGOUT = u'menu_item_logout'
 
 # Notifications
 NOTIF_SUCCESS = "//div[contains(@class, 'jnotify-notification-success')]"
@@ -56,16 +56,16 @@ class Client(object):
 
         # Fill the login form.
         self.browser.fill_form(
-            {USERNAME_FLD: username, PASSWORD_FLD: password})
+            {FLD_USERNAME: username, FLD_PASSWORD: password})
         # Click the 'Login' button
-        self.browser.find_by_name(SUBMIT_BTN).click()
+        self.browser.find_by_name(BTN_LOGIN).click()
 
     def logout(self):
         """Performs a logout."""
         # Position the mouse over the account menu to expose submenus.
-        self.browser.find_by_id(ACCOUNT_MN).mouse_over()
+        self.browser.find_by_id(MENU_ACCOUNT).mouse_over()
         # Then, click the logout menu
-        self.browser.find_by_id(LOGOUT_MN).click()
+        self.browser.find_by_id(MENU_LOGOUT).click()
 
     def __getattr__(self, name):
         """Proxy attr lookup to self.browser.
