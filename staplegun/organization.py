@@ -1,4 +1,4 @@
-from client import Client
+from client import Client, NOTIF_SUCCESS
 
 URL = u'/organizations'
 NEW_BTN = u'/organizations/new'
@@ -67,7 +67,11 @@ def delete(name, really=True):
         # Handle the confirmation dialog
         alert_dlg = client.browser.get_alert()
 
+        # Really delete the organization?
         if really:
             alert_dlg.accept()
         else:
             alert_dlg.dismiss()
+
+        # Check for success notification
+        client.is_element_present_by_xpath(NOTIF_SUCCESS, wait_time=5)

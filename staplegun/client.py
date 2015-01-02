@@ -5,7 +5,6 @@ from config import conf
 from splinter import Browser
 
 import logging
-import os
 
 
 logger = logging.getLogger(__name__)  # pylint:disable=invalid-name
@@ -15,6 +14,12 @@ PASSWORD_FLD = u'login[password]'
 SUBMIT_BTN = u'commit'
 ACCOUNT_MN = u'account_menu'
 LOGOUT_MN = u'menu_item_logout'
+
+# Notifications
+NOTIF_SUCCESS = "//div[contains(@class, 'jnotify-notification-success')]"
+NOTIF_WARN = "//div[contains(@class, 'jnotify-notification-warning')]"
+NOTIF_ERROR = "//div[contains(@class, 'jnotify-notification-error')]"
+NOTIF_CLOSE = "//a[@class='jnotify-close']"
 
 
 class Client(object):
